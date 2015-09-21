@@ -1,26 +1,47 @@
+Snowflake [] cloud;
+
 void setup()
 {
-  //your code here
+    background(0);
+    size(1000, 600);
+
+    cloud = new Snowflake[1000];
+    for(int i = 0; i < cloud.length; i++)
+    {
+        cloud[i]= new Snowflake();
+    }
 }
 void draw()
 {
-  //your code here
+  background(0);
+  for(int j = 0; j < cloud.length; j++)
+  {
+    cloud[j].show();
+    cloud[j].lookDown();
+    //cloud[j].erase();
+    cloud[j].move();
+    cloud[j].wrap();
+  }
 }
 void mouseDragged()
 {
-  //your code here
+  
 }
 
 class Snowflake
 {
-  //class member variable declarations
+  int flakeX, flakeY;
+  boolean flakeMove;
   Snowflake()
   {
-    //class member variable initializations
+    flakeX = (int)(Math.random() * 1000);
+    flakeY = (int)(Math.random() * 1000 - 1000);
+    flakeMove = true;
   }
   void show()
   {
-    //your code here
+    fill(255);
+    ellipse(flakeX, flakeY, 5, 5);
   }
   void lookDown()
   {
@@ -32,7 +53,8 @@ class Snowflake
   }
   void move()
   {
-    //your code here
+    if(flakeMove == true)
+      flakeY += 1;
   }
   void wrap()
   {
