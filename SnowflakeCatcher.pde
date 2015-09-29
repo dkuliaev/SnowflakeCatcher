@@ -1,5 +1,6 @@
 Snowflake [] cloud;
 
+
 void setup()
 {
     background(0);
@@ -13,52 +14,90 @@ void setup()
 }
 void draw()
 {
-  background(0);
+  stroke(0, 255, 0);
+  line(0, 500, 1000, 500);
   for(int j = 0; j < cloud.length; j++)
   {
+    cloud[j].wrap();
     cloud[j].show();
     cloud[j].lookDown();
-    //cloud[j].erase();
     cloud[j].move();
-    cloud[j].wrap();
+    
+
+if(mousePressed == true && mouseButton == LEFT)
+ {
+  noStroke();
+  fill(255, 0, 0);
+  ellipse(mouseX, mouseY, 10, 10);
   }
-}
-void mouseDragged()
-{
-  
+if(mousePressed == true && mouseButton == RIGHT)
+  {
+    fill(0);
+    ellipse(mouseX, mouseY, 20, 20);
+  } 
+ }
 }
 
 class Snowflake
 {
+
   int flakeX, flakeY;
-  boolean flakeMove;
+  boolean flakeMove, flakeMoveOtherPart;
   Snowflake()
   {
+
     flakeX = (int)(Math.random() * 1000);
-    flakeY = (int)(Math.random() * 1000 - 1000);
+    flakeY = (int)(Math.random() * 5000 - 5000);
     flakeMove = true;
+    flakeMoveOtherPart = true;
+    
   }
   void show()
   {
+    
     fill(255);
-    ellipse(flakeX, flakeY, 5, 5);
+    stroke(255);
+    text("*", flakeX, flakeY);
+    //ellipse(flakeX, flakeY, 5, 5);
+    stroke(0);
+    fill(0);
+    ellipse(flakeX+2, flakeY - 10, 4, 4);
+   
   }
   void lookDown()
   {
-    //your code here
+
+    if(get(flakeX, flakeY + 3) == color(255, 0, 0))
+    {
+      flakeY += -1;
+    } 
+    if(get(flakeX, flakeY) == color(0, 255, 0))
+    {
+      flakeY = -3500;
+
+    }
+    if(get(flakeX, flakeY + 3) == color(255))
+    {
+      flakeY += -1;
+      flakeX = (int)(Math.random() * 1000);
+    }
   }
-  void erase()
-  {
-    //your code here
-  }
+
+    
   void move()
   {
-    if(flakeMove == true)
+   if(flakeMove == true)
       flakeY += 1;
+
+   if(flakeY <= 0)
+    {
+      flakeY += 2;
+    }
+    
   }
   void wrap()
   {
-    //your code here
+    
   }
 }
 
