@@ -4,9 +4,9 @@ Snowflake [] cloud;
 void setup()
 {
     background(0);
-    size(1000, 600);
+    size(1000/2, 600);
 
-    cloud = new Snowflake[1000];
+    cloud = new Snowflake[100];
     for(int i = 0; i < cloud.length; i++)
     {
         cloud[i]= new Snowflake();
@@ -46,7 +46,7 @@ class Snowflake
   Snowflake()
   {
 
-    flakeX = (int)(Math.random() * 1000);
+    flakeX = (int)(Math.random() * 1000/2);
     flakeY = (int)(Math.random() * 5000 - 5000);
     flakeMove = true;
     flakeMoveOtherPart = true;
@@ -79,7 +79,7 @@ class Snowflake
     if(get(flakeX, flakeY + 3) == color(255))
     {
       flakeY += -1;
-      flakeX = (int)(Math.random() * 1000);
+      flakeX = (int)(Math.random() * 1000/2);
     }
   }
 
