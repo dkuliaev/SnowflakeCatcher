@@ -61,7 +61,7 @@ class Snowflake
     //ellipse(flakeX, flakeY, 5, 5);
     stroke(0);
     fill(0);
-    ellipse(flakeX+2, flakeY - 10, 4, 4);
+    ellipse(flakeX+3, flakeY - 10, 4, 4);
    
   }
   void lookDown()
